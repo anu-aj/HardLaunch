@@ -53,6 +53,7 @@ is eligible, scoring compatibility, enforcing limits and saving data) is made by
 - [8. API reference](#8-api-reference)
 - [9. Project structure](#9-project-structure)
 - [Credits](#credits)
+- [AI Acknowledgement](#ai-acknowledgement)
 
 ---
 
@@ -475,3 +476,26 @@ HardLaunch/
 - Fonts: Bricolage Grotesque and Instrument Sans, SIL Open Font License, bundled in
   `web/assets/fonts/`.
 - Bootstrap 5.3.3, MIT License, bundled in `web/assets/vendor/bootstrap/`.
+
+---
+
+## AI Acknowledgement
+
+![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=for-the-badge&logo=claude&logoColor=white)
+![ChatGPT and Codex](https://img.shields.io/badge/ChatGPT_%C2%B7_Codex-412991?style=for-the-badge)
+
+Claude Code and Codex were used to develop the frontend of this application and to
+fine-tune the commits before final submission. AI was used responsibly, and all final
+work was done by **Anugraha Jawahar**.
+
+### Tools used
+
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![Claude Design](https://img.shields.io/badge/Claude_Design-D97757?style=for-the-badge&logo=claude&logoColor=white)
+
+| Tool | Used for |
+| --- | --- |
+| Claude Code (Anthropic) | Developing the frontend and fine-tuning commits |
+| Codex, in ChatGPT (OpenAI) | Developing the frontend and fine-tuning commits |
+| Figma | Designing the HardLaunch logo |
+| Claude Design | Generating the logo animation video |
