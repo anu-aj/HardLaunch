@@ -28,3 +28,6 @@ pytest.ini
 
 # Private presentation and submission notes
 prep.txt
+
+# Poster drafts (kept locally)
+branding/posters/
