@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-labelledby="t d">
+<title id="t">HardLaunch tech stack: Python is the brain</title>
+<desc id="d">The interface (HTML and Bootstrap, which replaced a first Tkinter attempt) shows screens. JavaScript is the messenger: it sends each click to Python as JSON over HTTP on localhost and draws Python's reply. Python makes every decision: server.py receives requests, validation.py checks them, scoring.py, connections.py and conversations.py apply the rules, models.py holds the User class and storage.py saves JSON files in data/. pytest checks the Python rules.</desc>
+<defs>
+  <linearGradient id="brain" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4B35A8"/><stop offset=".55" stop-color="#312070"/><stop offset="1" stop-color="#1E1248"/></linearGradient>
+  <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#4B35A8"/></marker>
+  <marker id="arrow-light" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#E9E3FF"/></marker>
+  <marker id="arrow-grey" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#9D92C7"/></marker>
+  <style>
+    text{font-family:'Segoe UI',Helvetica,Arial,sans-serif;fill:#1E1248}
+    .h1{font-size:28px;font-weight:700}
+    .sub{font-size:15px;fill:#5F5780}
+    .step{font-size:12px;font-weight:700;letter-spacing:1.5px;fill:#D43A78}
+    .title{font-size:22px;font-weight:700}
+    .li{font-size:14px}
+    .note{font-size:12.5px;fill:#5F5780}
+    .label{font-size:12px;font-weight:600;fill:#4B35A8}
+    .w{fill:#FFFFFF}
+    .lav{fill:#D9D2F5}
+    .mod{font-size:15px;font-weight:700;fill:#FFFFFF}
+    .modtext{font-size:12.5px;fill:#E9E3FF}
+  </style>
+</defs>
+<rect width="1200" height="820" fill="#F6F3FB"/>
+
+<text x="40" y="54" class="h1">How HardLaunch works: Python is the brain</text>
+<text x="40" y="82" class="sub">Every decision (checking input, matching, scoring, limits and saving) happens in Python. The browser only shows the results.</text>
+
+<!-- 1. Interface -->
+<rect x="40" y="116" width="260" height="304" rx="18" fill="#FFFFFF" stroke="#DDD6F0" stroke-width="1.5"/>
+<text x="62" y="148" class="step">1 · WHAT YOU SEE</text>
+<text x="62" y="180" class="title">Interface</text>
+<text x="62" y="214" class="li">• HTML pages</text>
+<text x="62" y="242" class="li">• Bootstrap 5.3 + styles.css</text>
+<text x="62" y="270" class="li">• Logo, avatars, intro GIF</text>
+<text x="62" y="298" class="li">• Responsive: phone to desktop</text>
+<text x="62" y="326" class="li">• Installable app (PWA)</text>
+<text x="62" y="392" class="note">Looks only. No rules live here.</text>
+
+<!-- Tkinter first attempt -->
+<rect x="40" y="476" width="260" height="128" rx="18" fill="#FFFFFF" fill-opacity=".5" stroke="#B3A6E6" stroke-width="1.5" stroke-dasharray="7 6"/>
+<text x="62" y="506" class="step" style="fill:#5F5780">FIRST ATTEMPT</text>
+<text x="62" y="534" class="title" style="font-size:19px">Tkinter desktop GUI</text>
+<text x="62" y="560" class="note">Replaced by HTML + Bootstrap for a</text>
+<text x="62" y="578" class="note">richer, responsive look. The Python</text>
+<text x="62" y="596" class="note">logic carried over.</text>
+<path d="M170 476V428" stroke="#9D92C7" stroke-width="2" stroke-dasharray="6 5" fill="none" marker-end="url(#arrow-grey)"/>
+<text x="180" y="456" class="note">evolved into</text>
+
+<!-- 2. JavaScript -->
+<rect x="350" y="116" width="230" height="304" rx="18" fill="#FFF1F6" stroke="#FFB3CC" stroke-width="1.5"/>
+<text x="372" y="148" class="step">2 · THE MESSENGER</text>
+<text x="372" y="180" class="title">JavaScript</text>
+<text x="372" y="204" class="note">app.js · the middle layer</text>
+<text x="372" y="240" class="li">• Turns each click into a</text>
+<text x="372" y="260" class="li">  JSON request (fetch)</text>
+<text x="372" y="292" class="li">• Draws Python's reply</text>
+<text x="372" y="312" class="li">  as the next screen</text>
+<text x="372" y="344" class="li">• Makes no decisions</text>
+<text x="372" y="392" class="note">Python re-checks everything.</text>
+
+<path d="M300 236H346" stroke="#4B35A8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<path d="M346 300H302" stroke="#4B35A8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="304" y="228" class="label" style="font-size:11px">clicks</text>
+<text x="304" y="318" class="label" style="font-size:11px">screens</text>
+
+<!-- HTTP arrows -->
+<path d="M580 214H626" stroke="#4B35A8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<path d="M626 300H582" stroke="#4B35A8" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+<text x="603" y="204" class="label" text-anchor="middle" style="font-size:11px">request</text>
+<text x="603" y="318" class="label" text-anchor="middle" style="font-size:11px">reply</text>
+<text x="603" y="252" class="label" text-anchor="middle" style="font-size:10.5px">HTTP</text>
+<text x="603" y="266" class="label" text-anchor="middle" style="font-size:10.5px">+ JSON</text>
+
+<!-- 3. Python, the brain -->
+<rect x="630" y="104" width="530" height="500" rx="24" fill="url(#brain)"/>
+<text x="656" y="138" class="step" style="fill:#FF86AD">3 · THE BRAIN</text>
+<text x="656" y="176" class="w" style="font-size:32px;font-weight:800">Python</text>
+<text x="1136" y="176" class="lav" text-anchor="end" style="font-size:13px">standard library only · localhost:8000</text>
+
+<rect x="656" y="196" width="478" height="62" rx="12" fill="#FFFFFF" fill-opacity=".12" stroke="#FFFFFF" stroke-opacity=".25"/>
+<text x="674" y="222" class="mod">server.py</text>
+<text x="674" y="244" class="modtext">http.server receives every request and routes it · one lock keeps saves in order</text>
+<path d="M895 258V274" stroke="#E9E3FF" stroke-width="2" marker-end="url(#arrow-light)"/>
+
+<rect x="656" y="278" width="478" height="62" rx="12" fill="#FFFFFF" fill-opacity=".12" stroke="#FFFFFF" stroke-opacity=".25"/>
+<text x="674" y="304" class="mod">validation.py</text>
+<text x="674" y="326" class="modtext">checks every field · raises ValidationError, shown as a friendly message</text>
+<path d="M895 340V356" stroke="#E9E3FF" stroke-width="2" marker-end="url(#arrow-light)"/>
+
+<rect x="656" y="360" width="152" height="104" rx="12" fill="#FF86AD" fill-opacity=".2" stroke="#FF86AD" stroke-opacity=".6"/>
+<text x="672" y="386" class="mod">scoring.py</text>
+<text x="672" y="408" class="modtext">who is eligible</text>
+<text x="672" y="426" class="modtext">score out of 100</text>
+<text x="672" y="444" class="modtext">attachment style</text>
+<rect x="819" y="360" width="152" height="104" rx="12" fill="#FF86AD" fill-opacity=".2" stroke="#FF86AD" stroke-opacity=".6"/>
+<text x="835" y="386" class="mod">connections.py</text>
+<text x="835" y="408" class="modtext">max 3 matches</text>
+<text x="835" y="426" class="modtext">2 unmatches / 7 h</text>
+<text x="835" y="444" class="modtext">"I'd like to meet"</text>
+<rect x="982" y="360" width="152" height="104" rx="12" fill="#FF86AD" fill-opacity=".2" stroke="#FF86AD" stroke-opacity=".6"/>
+<text x="998" y="386" class="mod">conversations.py</text>
+<text x="998" y="408" class="modtext">who may chat</text>
+<text x="998" y="426" class="modtext">messages</text>
+<text x="998" y="444" class="modtext">read-only history</text>
+<path d="M895 464V480" stroke="#E9E3FF" stroke-width="2" marker-end="url(#arrow-light)"/>
+
+<rect x="656" y="484" width="218" height="64" rx="12" fill="#FFFFFF" fill-opacity=".12" stroke="#FFFFFF" stroke-opacity=".25"/>
+<text x="674" y="510" class="mod">models.py</text>
+<text x="674" y="532" class="modtext">User dataclass · to_dict / from_dict</text>
+<path d="M878 516H912" stroke="#E9E3FF" stroke-width="2" marker-start="url(#arrow-light)" marker-end="url(#arrow-light)"/>
+<rect x="916" y="484" width="218" height="64" rx="12" fill="#FFFFFF" fill-opacity=".12" stroke="#FFFFFF" stroke-opacity=".25"/>
+<text x="934" y="510" class="mod">storage.py</text>
+<text x="934" y="532" class="modtext">JSON + pathlib · safe save-and-swap</text>
+<text x="656" y="580" class="lav" style="font-size:12.5px">Also: questions.py (15 questions) · catalog.py · photos.py · demo_profiles.py</text>
+
+<!-- Data -->
+<path d="M1110 548V640" stroke="#4B35A8" stroke-width="2.5" fill="none" marker-start="url(#arrow)" marker-end="url(#arrow)"/>
+<text x="1100" y="626" class="label" text-anchor="end">read / write</text>
+<path d="M880 660a139 18 0 0 0 278 0v96a139 18 0 0 1-278 0z" fill="#FFFFFF" stroke="#B3A6E6" stroke-width="1.5"/>
+<ellipse cx="1019" cy="660" rx="139" ry="18" fill="#E9E3FF" stroke="#B3A6E6" stroke-width="1.5"/>
+<text x="1019" y="704" text-anchor="middle" class="title" style="font-size:17px">data/ · JSON files</text>
+<text x="1019" y="728" text-anchor="middle" class="note">profiles · matches · conversations</text>
+<text x="1019" y="746" text-anchor="middle" class="note">12 fictional sample people</text>
+
+<!-- Tests -->
+<rect x="350" y="476" width="230" height="128" rx="18" fill="#FFFFFF" stroke="#DDD6F0" stroke-width="1.5"/>
+<text x="372" y="506" class="step" style="fill:#4B35A8">PROOF</text>
+<text x="372" y="536" class="title" style="font-size:19px">pytest · 46 tests</text>
+<text x="372" y="562" class="note">check quiz validation and the</text>
+<text x="372" y="580" class="note">whole app pipeline over HTTP</text>
+<path d="M580 540H626" stroke="#4B35A8" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+<text x="603" y="532" class="label" text-anchor="middle" style="font-size:11px">checks</text>
+
+<!-- Legend -->
+<rect x="40" y="672" width="780" height="104" rx="18" fill="#FFFFFF" stroke="#DDD6F0" stroke-width="1.5"/>
+<text x="62" y="704" class="step" style="fill:#5F5780">ONE CLICK, END TO END</text>
+<text x="62" y="732" class="li">You choose "I'd like to meet" → JavaScript sends it to Python → server.py checks who you are →</text>
+<text x="62" y="756" class="li">connections.py records it and checks the match → storage.py saves it → the reply redraws the screen.</text>
+</svg>
