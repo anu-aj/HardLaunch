@@ -25,3 +25,6 @@ data/connections.json
 
 requirements.txt
 pytest.ini
+
+# Private presentation and submission notes
+prep.txt

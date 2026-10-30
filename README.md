@@ -2,11 +2,38 @@
 
 **Meet someone on your wavelength. Dating with intent.**
 
-HardLaunch is a dating-app proof of concept for COMP9001. People create a profile,
-choose who they want to meet and why, and receive up to three thoughtful
-introductions in their city. People seeking a **long-term relationship** also take a
-15-question compatibility quiz. Matches open a chat only when both people choose
-"I'd like to meet".
+![The HardLaunch landing page: the logo animation plays full screen, then the page rises on top of it](docs/landing.gif)
+
+## About HardLaunch
+
+Most dating apps are built to keep you swiping: endless profiles, unclear intentions
+and matches that go nowhere. **HardLaunch is built for the opposite.** It is for adults
+who know what they are looking for and would rather meet a few people properly than
+scroll past hundreds.
+
+How it works:
+
+1. **Make it you.** Create a profile with an avatar or photo, your city, your
+   interests, and who you would like to meet.
+2. **Choose your intention:** a long-term relationship, casual dating or exploring
+   connections. Only people with the same intention are introduced. People seeking
+   something long-term take a short 15-question compatibility quiz and learn their
+   attachment style.
+3. **Meet your introductions.** You get up to three, each explaining what you share,
+   with a ready-made icebreaker and, for long-term seekers, a compatibility score out
+   of 100.
+4. **Say hello when it is mutual.** Chat opens only when both people choose "I'd like
+   to meet".
+
+**What makes it different:** fewer options and better questions, by design.
+
+- Everyone has at most three active matches.
+- Unmatching is limited to two every seven hours, so each connection gets a real chance.
+- Your relationship type can change only once a month.
+- Every introduction explains itself, and blocking is always free.
+
+HardLaunch is a COMP9001 proof of concept. It runs on one laptop, with fictional
+sample people and no online accounts.
 
 **Python is the brain of the project.** Every decision (checking input, deciding who
 is eligible, scoring compatibility, enforcing limits and saving data) is made by the
@@ -15,17 +42,16 @@ is eligible, scoring compatibility, enforcing limits and saving data) is made by
 ![HardLaunch tech stack: the interface and JavaScript send every action to Python, which decides and saves](docs/tech-stack.svg)
 
 **Contents:**
+- [About HardLaunch](#about-hardlaunch)
 - [1. Python: the brain](#1-python-the-brain)
 - [2. Python concepts used](#2-python-concepts-used)
 - [3. How the Python decides](#3-how-the-python-decides)
 - [4. Run it](#4-run-it)
 - [5. Tests](#5-tests)
 - [6. The interface](#6-the-interface)
-- [7. Presentation walkthrough](#7-presentation-walkthrough)
-- [8. Data, privacy and limits](#8-data-privacy-and-limits)
-- [9. API reference](#9-api-reference)
-- [10. Project structure](#10-project-structure)
-- [11. Submission and Padlet](#11-submission-and-padlet)
+- [7. Data, privacy and limits](#7-data-privacy-and-limits)
+- [8. API reference](#8-api-reference)
+- [9. Project structure](#9-project-structure)
 - [Credits](#credits)
 
 ---
@@ -64,7 +90,7 @@ interface (for example, claiming an extra unmatch), Python checks it again and r
 | `connections.py` | Saved matches, "I'd like to meet", unmatching, blocking, monthly type changes |
 | `conversations.py` | Starting conversations, sending messages, read-only history |
 | `photos.py` | Checks uploaded photos: type, size and file signature |
-| `demo_profiles.py` | Adds the ten fictional presentation profiles |
+| `demo_profiles.py` | Adds the ten fictional demo profiles |
 | `server.py` | Standard-library HTTP server: routes, request checks, static files |
 
 ---
@@ -204,13 +230,25 @@ the port is busy, run `python main.py --port 8001` and use the printed address.
 | http://localhost:8000/?profiles=1 | The profile switcher and the two-person demo |
 | http://localhost:8000/showcase | The project showcase page |
 
-To add the ten fictional presentation profiles to a fresh copy:
+To add the ten fictional demo profiles to a fresh copy:
 
 ```powershell
 python -m hardlaunch.demo_profiles
 ```
 
-For a separate rehearsal copy that leaves your saved profiles untouched:
+They cover every path:
+
+| Relationship type | Profiles | Ready to try |
+| --- | --- | --- |
+| Long-term relationship | Zara, Ethan, Harper, Miles | Completed quizzes; Zara ↔ Ethan and Harper ↔ Miles match |
+| Casual dating | Chloe, Finn, Sage | No quiz; introductions and chat |
+| Exploring connections | Elena, Oscar, River | No quiz; introductions and chat |
+
+To try a conversation, open **Profiles → Open Avery + Jordan**. They have both
+already said "I'd like to meet", so you can send a message, switch to the other
+person and reply.
+
+For a separate copy of the data that leaves your saved profiles untouched:
 
 ```powershell
 python main.py --port 8001 --data-dir .qa/rehearsal
@@ -223,8 +261,8 @@ Everything runs offline. Only the optional Spotify quiz music needs the internet
 ## 5. Tests
 
 ```powershell
-python -m pip install -r requirements.txt   # installs pytest (testing only)
-python -B -m pytest -q                      # -B: no __pycache__ folders
+python -m pip install pytest   # testing only; the app itself needs nothing
+python -B -m pytest -q         # -B: no __pycache__ folders
 ```
 
 **46 tests pass**, in two focused files. They use temporary files, so your saved
@@ -324,33 +362,10 @@ dropdown, pop-up messages and alerts, all themed through its CSS variables.
 
 ---
 
-## 7. Presentation walkthrough
-
-The ten fictional presentation profiles cover all three intentions:
-
-| Relationship type | Profiles | Ready to show |
-| --- | --- | --- |
-| Long-term relationship | Zara, Ethan, Harper, Miles | Completed quizzes; Zara ↔ Ethan and Harper ↔ Miles match |
-| Casual dating | Chloe, Finn, Sage | No quiz; introductions and chat |
-| Exploring connections | Elena, Oscar, River | No quiz; introductions and chat |
-
-**Avery + Jordan** (Profiles → *Open Avery + Jordan*) are a casual pair who have
-already both said "I'd like to meet", so their chat is open straight away.
-
-| Time | What to show |
-| --- | --- |
-| 0:00–0:20 | The problem: introductions built on clear intentions and mutual preferences. Skip the intro animation. |
-| 0:20–1:20 | **The Python brain:** the diagram above, the `User` class, how `scoring.py` builds the score out of 100, safe JSON saving in `storage.py`, `ValidationError`, and "46 tests pass". |
-| 1:20–1:50 | Start a profile; show the live preview. Explain that only long-term seekers take the quiz. |
-| 1:50–2:20 | Open Zara and show the gamified quiz (heart progress, music), then her wavelength and matches. Browse without changing answers: Python refuses an edit that would quietly end her match. |
-| 2:20–3:00 | Open Avery + Jordan: send a message, **switch to Jordan** and reply. Mention the match and unmatch limits enforced by Python. |
-
----
-
-## 8. Data, privacy and limits
+## 7. Data, privacy and limits
 
 - Everything stays on this laptop as JSON in `data/`. The 12 sample people and the
-  ten presentation profiles are fictional; use fictional data when presenting.
+  ten demo profiles are fictional.
 - There are no accounts or passwords: anyone using this local app can open any saved
   profile. One profile is active at a time, and stale browser tabs cannot send as
   someone else.
@@ -363,7 +378,7 @@ already both said "I'd like to meet", so their chat is open straight away.
 
 ---
 
-## 9. API reference
+## 8. API reference
 
 All POST requests send JSON. Invalid fields return 422 with the field names; stale
 profiles return 409; an exhausted unmatch allowance returns 429. Only files in `web/`
@@ -394,63 +409,60 @@ are served; data files never are.
 
 ---
 
-## 10. Project structure
+## 9. Project structure
+
+The folders are numbered in the order a request flows through them, matching the
+diagram at the top.
 
 ```text
-main.py                       starts the local server
-hardlaunch/                   THE BRAIN: all rules, decisions and saving (Python)
-  models.py                   User dataclass
-  storage.py                  JSON files, safe saving
-  validation.py               field checks, ValidationError
-  questions.py                the 15 quiz questions
-  catalog.py                  fixed choices (cities, genders, intentions...)
-  scoring.py                  eligibility, score out of 100, attachment style
-  connections.py              matches, meet consent, unmatch and block, type changes
-  conversations.py            chats and messages
-  photos.py                   photo checks
-  demo_profiles.py            the ten presentation profiles
-  server.py                   HTTP server and API routes
-tests/                        pytest: quiz validation + app pipeline (46 tests)
-web/                          the interface
-  index.html, showcase.html   pages
-  styles.css                  theme and layout on top of Bootstrap
-  app.js                      JavaScript middle layer
-  assets/                     logo, icons, intro animation, avatars, fonts, Bootstrap
-data/sample_users.json        12 fictional sample people
-data/*.json (others)          local profiles, matches and chats (gitignored)
-docs/tech-stack.svg           the tech-stack diagram
-docs/moodboard-v0.1.png       the first design concept
-branding/                     logo, app icon and animation source files
-scripts/                      regenerates avatars and sample people
+HardLaunch/
+├── main.py                      1. START: "python main.py" starts the server
+│
+├── hardlaunch/                  2. THE BRAIN (Python): every rule, decision and save
+│   ├── server.py                   receives each request and routes it
+│   ├── validation.py               checks every field (ValidationError)
+│   ├── photos.py                   checks uploaded photos
+│   ├── scoring.py                  eligibility, score out of 100, attachment style
+│   ├── connections.py              matches, "I'd like to meet", unmatch, block
+│   ├── conversations.py            chats and messages
+│   ├── models.py                   the User dataclass
+│   ├── storage.py                  saves and loads JSON files safely
+│   ├── questions.py                the 15 quiz questions
+│   ├── catalog.py                  fixed choices: cities, genders, intentions
+│   └── demo_profiles.py            adds the ten fictional demo profiles
+│
+├── data/                        3. SAVED DATA (JSON files)
+│   ├── sample_users.json           12 fictional sample people
+│   └── other *.json                your profiles, matches and chats
+│                                   (created as you use the app; not on GitHub)
+│
+├── web/                         4. THE INTERFACE (what you see)
+│   ├── index.html                  the app page
+│   ├── showcase.html               the project showcase page
+│   ├── app.js                      JavaScript middle layer: clicks in, screens out
+│   ├── styles.css                  theme and layout on top of Bootstrap
+│   ├── manifest.webmanifest        lets the app install like a desktop app
+│   └── assets/                     logo, icons, intro animation, avatars,
+│                                   fonts and Bootstrap
+│
+├── tests/                       5. PROOF (pytest, 46 tests)
+│   ├── test_scoring.py             quiz validation and scoring
+│   ├── test_server.py              the whole app pipeline over HTTP
+│   └── frontend_flow.cjs           runs the interface code against Python
+│                                   (only when Node.js is installed)
+│
+├── docs/                        6. README IMAGES
+│   ├── landing.gif                 recording of the landing page
+│   ├── tech-stack.svg              the "Python is the brain" diagram
+│   └── moodboard-v0.1.png          the first design concept
+│
+├── branding/                    logo, app icon and animation source files
+└── scripts/                     regenerates avatars and sample people
 ```
 
----
-
-## 11. Submission and Padlet
-
-**Before submitting a zip**, clear your test profiles so the marker sees only the
-fictional cast:
-
-1. Delete `data/local_users.json`, `data/current_profile.json`,
-   `data/connections.json` and `data/conversations.json`.
-2. Run `python -m hardlaunch.demo_profiles`.
-
-Include `main.py`, `hardlaunch/`, `web/`, `data/sample_users.json`, `tests/`, `docs/`
-and this README. Leave out `.venv/`, `.qa/` and caches. The marker needs only Python.
-
-**Padlet title:** HardLaunch — meet someone on your wavelength
-
-**Padlet image:** `docs/tech-stack.svg`, or a screenshot of the landing page or the quiz.
-
-**Padlet description:**
-
-> HardLaunch is a Python dating-app prototype for adults who want introductions based
-> on clear intentions. Python is the brain: a standard-library server, a `User` class,
-> JSON file storage, validation with custom exceptions, and matching rules that score
-> long-term compatibility out of 100, cap everyone at three matches and limit
-> unmatches. 46 automated tests check the quiz and the whole app pipeline. The interface began in Tkinter and moved to
-> HTML, Bootstrap and JavaScript for a richer look, with a gamified quiz and an animated
-> intro. Run it with `python main.py`; everything stays on one laptop.
+**One click, through the folders:** `web/app.js` → `hardlaunch/server.py` →
+`validation.py` → `scoring.py` / `connections.py` / `conversations.py` →
+`storage.py` → `data/` → back to `web/app.js`, which draws the reply.
 
 ---
 
